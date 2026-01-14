@@ -3,7 +3,7 @@
 #========================================
 import random
 import pandas as pd
-import seaborne as sns
+import seaborn as sns
 
 #Game Values
 cards = {
@@ -56,8 +56,6 @@ def blackJack():
         else:
             print("It's a tie!")
 
-        break  # Exit the while loop after determining the winner when the player stays
-
     elif call == "2" or call == "hit":
         playerCards.append(cards.pop())
         print("Your hand is:")
@@ -67,6 +65,6 @@ def blackJack():
         player_total = calculate_total(playerCards)
         if player_total > 21:
             print("You busted!")
-            break  # Exit the loop if the player busts (total > 21)
+
 def dataAnalysis():
-    #This will be where players can go to check their stats
+    print("Placeholder text. Also, did you know that when you out of the in, you had out in of your?")
