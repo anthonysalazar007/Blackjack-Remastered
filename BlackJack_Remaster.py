@@ -1,9 +1,11 @@
 #========================================
-#To do; Figure out duplicate blackjack funcs
+#To do;
 #========================================
 import random
 import pandas as pd
 import seaborne as sns
+
+#Game Values
 cards = {
     'Ace of Hearts': 11, '2 of Hearts': 2, '3 of Hearts': 3, '4 of Hearts': 4, '5 of Hearts': 5,
     '6 of Hearts': 6, '7 of Hearts': 7, '8 of Hearts': 8, '9 of Hearts': 9, '10 of Hearts': 10,
@@ -21,50 +23,50 @@ cards = {
     '6 of Spades': 6, '7 of Spades': 7, '8 of Spades': 8, '9 of Spades': 9, '10 of Spades': 10,
     'Jack of Spades': 10, 'Queen of Spades': 10, 'King of Spades': 10
 }
-
 playerCards = []
 houseCards = []
+
+#Data Values
 playerWins = []
 houseWins = []
 ties = []
-playerChips = [20]
+playerChips = [200]
 
-def blackjack():
-    global playerCards, houseCards, houseWins, playerWins  # Ensure you reference global variables here
-    while True:
+def blackJack():
+    print("Your hand is:")
+    print(playerCards)
+    print("The house has:")
+    print(houseCards[0])  # Displaying only the house's first card
+
+    call = input("What would you like to do?\n>>1. Stay\n>>2. Hit\n>>").lower()
+
+    if call == "1" or call == "stay":
+        print("The House had", houseCards)
+        player_total = calculate_total(playerCards)
+        house_total = calculate_total(houseCards)
+
+        if house_total > player_total and house_total <= 21:
+            print("House wins. The House had:")
+            print(houseCards)
+            houseWins += 1
+        elif player_total < house_total or player_total > 21:
+            print("You win. The house had:")
+            print(houseCards)
+            playerWins += 1
+        else:
+            print("It's a tie!")
+
+        break  # Exit the while loop after determining the winner when the player stays
+
+    elif call == "2" or call == "hit":
+        playerCards.append(cards.pop())
         print("Your hand is:")
         print(playerCards)
-        print("The house has:")
-        print(houseCards[0])  # Displaying only the house's first card
 
-        call = input("What would you like to do?\n>>1. Stay\n>>2. Hit\n>>").lower()
-
-        if call == "1" or call == "stay":
-            print("The House had", houseCards)
-            player_total = calculate_total(playerCards)
-            house_total = calculate_total(houseCards)
-
-            if house_total > player_total and house_total <= 21:
-                print("House wins. The House had:")
-                print(houseCards)
-                houseWins += 1
-            elif player_total < house_total or player_total > 21:
-                print("You win. The house had:")
-                print(houseCards)
-                playerWins += 1
-            else:
-                print("It's a tie!")
-
-            break  # Exit the while loop after determining the winner when the player stays
-
-        elif call == "2" or call == "hit":
-            playerCards.append(cards.pop())
-            print("Your hand is:")
-            print(playerCards)
-
-            # Calculate the total value of playerCards and check if it exceeds 21
-            player_total = calculate_total(playerCards)
-            if player_total > 21:
-                print("You busted!")
-                break  # Exit the loop if the player busts (total > 21)
-
+        # Calculate the total value of playerCards and check if it exceeds 21
+        player_total = calculate_total(playerCards)
+        if player_total > 21:
+            print("You busted!")
+            break  # Exit the loop if the player busts (total > 21)
+def dataAnalysis():
+    #This will be where players can go to check their stats
