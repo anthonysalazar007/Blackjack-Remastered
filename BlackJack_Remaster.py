@@ -29,19 +29,8 @@ houseWins = []
 ties = []
 playerChips = [20]
 
-play = input("Hello! Would you like to play Blackjack?\n>>1. Yes\n>>2. No\n>>").lower()
-
-if play == "yes" or play == "1":
-    blackjack()
-elif play == "no" or play == "2":
-    quit()
-
-
-#REMADE BLACKJACK DEF WITH while
-
 def blackjack():
     global playerCards, houseCards, houseWins, playerWins  # Ensure you reference global variables here
-
     while True:
         print("Your hand is:")
         print(playerCards)
@@ -52,10 +41,6 @@ def blackjack():
 
         if call == "1" or call == "stay":
             print("The House had", houseCards)
-            # Perform comparisons and determine the winner based on the rules of Blackjack
-            # Ensure you adjust the condition based on the total value of cards
-            # Implement logic to compare the total value of cards between player and house
-            # Adjust the code here to compare total card values
             player_total = calculate_total(playerCards)
             house_total = calculate_total(houseCards)
 
