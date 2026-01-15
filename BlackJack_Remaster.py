@@ -29,42 +29,41 @@ houseCards = []
 #Data Values
 playerWins = []
 houseWins = []
+pushes = [] #pushes are ties in blackjack
 ties = []
 playerChips = [200]
 
-def blackJack():
+def blackJack(): # entire AREA SUBJECT TO REVIEW
+    # Scramble the deck three times
+    # Assign 2 cards to player
+    # Assign 2 cards to house, displaying only the first
     print("Your hand is:")
     print(playerCards)
     print("The house has:")
     print(houseCards[0])  # Displaying only the house's first card
 
     call = input("What would you like to do?\n>>1. Stay\n>>2. Hit\n>>").lower()
+    
+    def stay():
+        #calculate total value of cards
+            #if total > 21
+                #if ace in hand
+                    #player hand -= 10
+                #else
+                    #you busted
+        #if player cards > house cards 
+            #upload data
+        #elif player cards < house cards 
 
+        #elif player cards < house cards 
+
+    def hit():
+        #placeholder
     if call == "1" or call == "stay":
-        print("The House had", houseCards)
-        player_total = calculate_total(playerCards)
-        house_total = calculate_total(houseCards)
-
-        if house_total > player_total and house_total <= 21:
-            print("House wins. The House had:")
-            print(houseCards)
-            houseWins += 1
-        elif player_total < house_total or player_total > 21:
-            print("You win. The house had:")
-            print(houseCards)
-            playerWins += 1
-        else:
-            print("It's a tie!")
-
+        stay()
     elif call == "2" or call == "hit":
-        playerCards.append(cards.pop())
-        print("Your hand is:")
-        print(playerCards)
+        hit()
 
-        # Calculate the total value of playerCards and check if it exceeds 21
-        player_total = calculate_total(playerCards)
-        if player_total > 21:
-            print("You busted!")
 
 def dataAnalysis():
     print("Placeholder text. Also, did you know that when you out of the in, you had out in of your?")
